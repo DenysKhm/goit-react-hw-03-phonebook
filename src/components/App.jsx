@@ -17,7 +17,7 @@ export default class App extends React.Component {
   componentDidMount() {
     const phoneContacts = localStorage.getItem('contacts');
     const parcedContacts = JSON.parse(phoneContacts);
-    if (parcedContacts !== this.state.contacts) {
+    if (parcedContacts) {
       this.setState({contacts: parcedContacts})
     }
   }
