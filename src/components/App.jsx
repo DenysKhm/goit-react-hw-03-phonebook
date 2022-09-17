@@ -15,14 +15,17 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parcedContacts = JSON.parse(contacts);
-    if (parcedContacts) this.setState({ contacts: parcedContacts });
+    const phoneContacts = localStorage.getItem('contacts');
+    const parcedContacts = JSON.parse(phoneContacts);
+    if (parcedContacts !== this.state.contacts) {
+      this.setState({contacts: parcedContacts})
+    }
   }
 
   componentDidUpdate(prevState) {
-    if (this.state.contacts !== prevState.contacts)
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    }
   }
 
   addContact = newContact => {
